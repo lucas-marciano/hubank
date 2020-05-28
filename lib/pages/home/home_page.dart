@@ -47,6 +47,11 @@ class _HomePageState extends State<HomePage> {
             top: _screenHeight * .22,
             showMenu: _showMenu,
           ),
+          BulletsApp(
+            screenHeight: _screenHeight * .70,
+            currentIndex: _currentIndex,
+            showMenu: _showMenu,
+          ),
           PageViewApp(
             screenHeight: _yPosition,
             onChangeCallback: (index) {
@@ -78,11 +83,6 @@ class _HomePageState extends State<HomePage> {
                     : (_yPosition == top ? false : _showMenu);
               });
             },
-            showMenu: _showMenu,
-          ),
-          BulletsApp(
-            screenHeight: _screenHeight * .70,
-            currentIndex: _currentIndex,
             showMenu: _showMenu,
           ),
           BottomMenu(
