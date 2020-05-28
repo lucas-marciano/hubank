@@ -4,6 +4,7 @@ import 'package:hubank/pages/home/widgets/menu/menu_app.dart';
 import 'package:hubank/pages/home/widgets/page_view_app.dart';
 
 import 'widgets/bullets_app.dart';
+import 'widgets/menu_bottom/bottom_menu.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -82,6 +83,9 @@ class _HomePageState extends State<HomePage> {
           BulletsApp(
             screenHeight: _screenHeight * .70,
             currentIndex: _currentIndex,
+            showMenu: _showMenu,
+          ),
+          BottomMenu(
             showMenu: _showMenu,
           ),
         ],
