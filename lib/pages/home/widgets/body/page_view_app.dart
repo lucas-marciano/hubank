@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'cards/card_app.dart';
-import 'cards/info_card.dart';
+import 'package:hubank/pages/home/widgets/cards/card_app.dart';
+import 'package:hubank/pages/home/widgets/cards/count_card.dart';
+import 'package:hubank/pages/home/widgets/cards/info_card.dart';
 
 class PageViewApp extends StatelessWidget {
   final double screenHeight;
@@ -33,15 +34,9 @@ class PageViewApp extends StatelessWidget {
               ? NeverScrollableScrollPhysics()
               : BouncingScrollPhysics(),
           children: <Widget>[
-            CardApp(
-              child: InfoCard(),
-            ),
-            CardApp(
-              child: InfoCard(),
-            ),
-            CardApp(
-              child: InfoCard(),
-            ),
+            CardApp(child: InfoCard()),
+            CardApp(child: CountCard()),
+            CardApp(child: InfoCard()),
           ],
         ),
       ),
