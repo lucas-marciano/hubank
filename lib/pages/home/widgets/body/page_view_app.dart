@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hubank/pages/home/widgets/cards/card_app.dart';
 import 'package:hubank/pages/home/widgets/cards/count_card.dart';
 import 'package:hubank/pages/home/widgets/cards/info_card.dart';
+import 'package:hubank/pages/home/widgets/cards/reward_card.dart';
 
 class PageViewApp extends StatelessWidget {
   final double screenHeight;
@@ -36,7 +37,7 @@ class PageViewApp extends StatelessWidget {
           children: <Widget>[
             CardApp(child: InfoCard()),
             CardApp(child: CountCard()),
-            CardApp(child: InfoCard()),
+            CardApp(child: RewardCard()),
           ],
         ),
       ),
