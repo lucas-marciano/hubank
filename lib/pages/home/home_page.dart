@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hubank/pages/home/widgets/app_bar_dark.dart';
+import 'package:hubank/pages/home/widgets/body/app_bar_dark.dart';
+import 'package:hubank/pages/home/widgets/body/bullets_app.dart';
+import 'package:hubank/pages/home/widgets/body/page_view_app.dart';
 import 'package:hubank/pages/home/widgets/menu/menu_app.dart';
-import 'package:hubank/pages/home/widgets/page_view_app.dart';
-
-import 'widgets/bullets_app.dart';
-import 'widgets/menu_bottom/bottom_menu.dart';
+import 'package:hubank/pages/home/widgets/menu_bottom/bottom_menu.dart';
 
 class HomePage extends StatefulWidget {
   @override

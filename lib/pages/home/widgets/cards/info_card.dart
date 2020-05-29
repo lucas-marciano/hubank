@@ -1,40 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hubank/pages/home/widgets/cards/card_components/bottom_card.dart';
+import 'package:hubank/pages/home/widgets/cards/card_components/title_card.dart';
 
 class InfoCard extends StatelessWidget {
-  // TODO: make it this method receive a model to fill the last buy
-  Widget _buildBottomInfo() => Expanded(
-        flex: 1,
-        child: Container(
-          color: Colors.grey[200],
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Icon(
-                  Icons.shopping_cart,
-                  color: Colors.grey,
-                ),
-                SizedBox(width: 5),
-                Flexible(
-                  child: Text(
-                    "Compra mais recente em super-mercado no valor de R\$300,00 sexta",
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 13,
-                    ),
-                  ),
-                ),
-                Icon(
-                  Icons.chevron_right,
-                  color: Colors.grey[400],
-                  size: 18,
-                ),
-              ],
-            ),
-          ),
-        ),
-      );
 
   Widget _buildTopInfo() => Expanded(
         flex: 3,
@@ -47,18 +15,9 @@ class InfoCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        children: [
-                          Icon(Icons.credit_card, color: Colors.grey),
-                          SizedBox(width: 5),
-                          Text(
-                            "Cartão de crédito",
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 13,
-                            ),
-                          ),
-                        ],
+                      TitleCard(
+                        icon: Icons.credit_card,
+                        text: "Cartão de crédito",
                       ),
                       SizedBox(
                         height: 20,
@@ -176,7 +135,10 @@ class InfoCard extends StatelessWidget {
       child: Column(
         children: [
           _buildTopInfo(),
-          _buildBottomInfo(),
+          BottomCard(
+            description:
+                "Compra mais recente em super-mercado no valor de R\$300,00 sexta",
+          ),
         ],
       ),
     );
