@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class ItemMenuBottom extends StatelessWidget {
   final double _paddingHorizonta = 4;
   final double _paddingVertical = 6;
-  final double _width = 100;
 
   final IconData icon;
   final String text;
@@ -12,6 +11,9 @@ class ItemMenuBottom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    double widthCard = MediaQuery.of(context).size.width * .28;
+
     BoxDecoration _getDecoration() {
       return BoxDecoration(
         borderRadius: BorderRadius.circular(5),
@@ -47,7 +49,7 @@ class ItemMenuBottom extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: _getColum(),
         ),
-        width: _width,
+        width: widthCard,
         decoration: _getDecoration(),
       ),
     );

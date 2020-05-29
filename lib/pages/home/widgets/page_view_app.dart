@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'card_app.dart';
+import 'cards/card_app.dart';
+import 'cards/info_card.dart';
 
 class PageViewApp extends StatelessWidget {
   final double screenHeight;
@@ -18,7 +19,7 @@ class PageViewApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedPositioned(
-      duration: Duration(milliseconds: 150),
+      duration: Duration(milliseconds: 250),
       curve: Curves.easeOut,
       top: screenHeight,
       height: 330,
@@ -28,11 +29,19 @@ class PageViewApp extends StatelessWidget {
         onPanUpdate: onPanUpdate,
         child: PageView(
           onPageChanged: onChangeCallback,
-          physics: showMenu ? NeverScrollableScrollPhysics() : BouncingScrollPhysics(),
+          physics: showMenu
+              ? NeverScrollableScrollPhysics()
+              : BouncingScrollPhysics(),
           children: <Widget>[
-            CardApp(),
-            CardApp(),
-            CardApp(),
+            CardApp(
+              child: InfoCard(),
+            ),
+            CardApp(
+              child: InfoCard(),
+            ),
+            CardApp(
+              child: InfoCard(),
+            ),
           ],
         ),
       ),
