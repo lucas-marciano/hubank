@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'item_menu_bottom.dart';
 
 class BottomMenu extends StatefulWidget {
@@ -18,15 +17,6 @@ class _BottomMenuState extends State<BottomMenu> {
   void initState() {
     super.initState();
     _tween = Tween<double>(begin: 150.0, end: 0.0);
-    delayAnimation();
-  }
-
-  Future<void> delayAnimation() async {
-    await Future.delayed(Duration(microseconds: 500), () {
-      setState(() {
-        _tween = Tween<double>(begin: 80.0, end: 0);
-      });
-    });
   }
 
   @override
