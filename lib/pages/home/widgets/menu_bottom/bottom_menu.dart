@@ -18,13 +18,22 @@ class _BottomMenuState extends State<BottomMenu> {
   void initState() {
     super.initState();
     _tween = Tween<double>(begin: 150.0, end: 0.0);
+    delayAnimation();
+  }
+
+  Future<void> delayAnimation() async {
+    await Future.delayed(Duration(microseconds: 500), () {
+      setState(() {
+        _tween = Tween<double>(begin: 80.0, end: 0);
+      });
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return TweenAnimationBuilder<double>(
         tween: _tween,
-        duration: Duration(milliseconds: 300),
+        duration: Duration(microseconds: 300),
         curve: Curves.easeOutExpo,
         builder: (context, value, child) {
           return AnimatedPositioned(
