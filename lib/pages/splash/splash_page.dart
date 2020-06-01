@@ -16,11 +16,15 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   Future<void> dealyNavigateToNextScreen() async {
-    await Future.delayed(Duration(seconds: 3), () {
+    return await Future.delayed(Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(
-          builder: (context) {
+        PageRouteBuilder(
+          pageBuilder: (
+            BuildContext context,
+            Animation<double> animation,
+            Animation<double> secondaryAnimation,
+          ) {
             return HomePage();
           },
         ),
