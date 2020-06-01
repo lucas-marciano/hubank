@@ -4,7 +4,7 @@ import 'package:hubank/pages/home/widgets/cards/count_card.dart';
 import 'package:hubank/pages/home/widgets/cards/info_card.dart';
 import 'package:hubank/pages/home/widgets/cards/reward_card.dart';
 
-class PageViewApp extends StatelessWidget {
+class PageViewApp extends StatefulWidget {
   final double screenHeight;
   final ValueChanged<int> onChangeCallback;
   final GestureDragUpdateCallback onPanUpdate;
@@ -19,28 +19,56 @@ class PageViewApp extends StatelessWidget {
       : super(key: key);
 
   @override
+  _PageViewAppState createState() => _PageViewAppState();
+}
+
+class _PageViewAppState extends State<PageViewApp> {
+  Tween<double> _tween;
+
+  @override
+  void initState() {
+    super.initState();
+    _tween = Tween<double>(begin: 80.0, end: 80.0);
+    delayAnimation();
+  }
+
+  Future<void> delayAnimation() async {
+    await Future.delayed(Duration(microseconds: 500), () {
+      setState((){
+        _tween = Tween<double>(begin: 80.0, end: 0);
+      });
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return AnimatedPositioned(
-      duration: Duration(milliseconds: 250),
-      curve: Curves.easeOut,
-      top: screenHeight,
-      height: 330,
-      left: 0,
-      right: 0,
-      child: GestureDetector(
-        onPanUpdate: onPanUpdate,
-        child: PageView(
-          onPageChanged: onChangeCallback,
-          physics: showMenu
-              ? NeverScrollableScrollPhysics()
-              : BouncingScrollPhysics(),
-          children: <Widget>[
-            CardApp(child: InfoCard()),
-            CardApp(child: CountCard()),
-            CardApp(child: RewardCard()),
-          ],
-        ),
-      ),
-    );
+    return TweenAnimationBuilder<double>(
+        tween: _tween,
+        duration: Duration(milliseconds: 300),
+        curve: Curves.bounceOut,
+        builder: (context, value, child) {
+          return AnimatedPositioned(
+            duration: Duration(milliseconds: 250),
+            curve: Curves.easeOut,
+            top: widget.screenHeight,
+            height: 330,
+            left: value,
+            right: value * -1,
+            child: GestureDetector(
+              onPanUpdate: widget.onPanUpdate,
+              child: PageView(
+                onPageChanged: widget.onChangeCallback,
+                physics: widget.showMenu
+                    ? NeverScrollableScrollPhysics()
+                    : BouncingScrollPhysics(),
+                children: <Widget>[
+                  CardApp(child: InfoCard()),
+                  CardApp(child: CountCard()),
+                  CardApp(child: RewardCard()),
+                ],
+              ),
+            ),
+          );
+        });
   }
 }
